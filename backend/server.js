@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 import connectMongoDB from "./db/connect.js";
 import authRoutes from "./routes/auth.routes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("API is running...");
